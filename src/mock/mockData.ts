@@ -1,4 +1,4 @@
-import type { Student, Announcement, Course } from '@/types'
+import type { Student, Announcement, Course, CourseScheduleItem, Attendance } from '@/types'
 import tunahanPhoto from '@/assets/Photos/tunahan.jpeg'
 
 export const mockStudent: Student = {
@@ -18,7 +18,7 @@ export const mockStudent: Student = {
     status: 'active',
     registrationStatus: 'halen kayıtlı öğrencidir',
     advisor: 'Prof. Dr. Özcan ÖZYURT',
-    gpa: 3.97,
+    gpa: 3.42,
     totalCredits: 120,
     completedCredits: 64,
     feeStatus: 'paid',
@@ -62,149 +62,210 @@ export const mockAnnouncements: Announcement[] = [
     },
 ]
 
+// Yeni görüntüdeki ders programına göre güncellendi
 export const mockCourses: Course[] = [
     {
         id: '1',
-        code: 'YZM201',
-        name: 'Veri Yapıları',
-        credits: 4,
-        instructor: 'Prof. Dr. Özcan ÖZYURT',
-        schedule: 'Pazartesi 09:00-12:00',
+        code: 'YZG2013',
+        name: 'Programlama Laboratuvarı III',
+        credits: 3,
+        instructor: 'Dr. Öğr. Üyesi Sayyad ALİZADEH',
+        schedule: 'Perşembe 14:00-17:00',
         status: 'active',
     },
     {
         id: '2',
-        code: 'YZM203',
-        name: 'Nesne Yönelimli Programlama',
-        credits: 4,
-        instructor: 'Doç. Dr. Ahmet YILDIZ',
-        schedule: 'Salı 13:00-16:00',
+        code: 'YZG2011',
+        name: 'Yazılım Gereksinimleri Analizi',
+        credits: 3,
+        instructor: 'Prof. Dr. Özcan ÖZYURT',
+        schedule: 'Çarşamba 10:00-12:00, 13:00-14:00',
         status: 'active',
     },
     {
         id: '3',
-        code: 'YZM205',
-        name: 'Veritabanı Yönetim Sistemleri',
-        credits: 3,
-        instructor: 'Dr. Öğr. Üyesi Mehmet KAYA',
-        schedule: 'Çarşamba 09:00-12:00',
+        code: 'YZG2009',
+        name: 'Bilgisayar Mimarisi ve Mantıksal Tasarım',
+        credits: 4,
+        instructor: 'Dr. Öğr. Üyesi Özkan BİNGÖL',
+        schedule: 'Pazartesi 09:00-12:00',
         status: 'active',
     },
     {
         id: '4',
-        code: 'YZM101',
-        name: 'Programlamaya Giriş',
+        code: 'YZG2007',
+        name: 'Veri Yapıları ve Algoritmalar',
         credits: 4,
-        instructor: 'Prof. Dr. Özcan ÖZYURT',
-        schedule: '',
-        status: 'completed',
-        grade: 'AA',
-        points: 4.0,
+        instructor: 'Dr. Öğr. Üyesi Sayyad ALİZADEH',
+        schedule: 'Çarşamba 08:00-10:00, Perşembe 13:00-15:00',
+        status: 'active',
     },
     {
         id: '5',
-        code: 'MAT101',
-        name: 'Matematik I',
+        code: 'YZG2005',
+        name: 'Sayısal Analiz',
+        credits: 3,
+        instructor: 'Prof. Dr. Erhan COŞKUN',
+        schedule: 'Çarşamba 15:00-17:00',
+        status: 'active',
+    },
+    {
+        id: '6',
+        code: 'YZG2003',
+        name: 'Nesneye Yönelik Programlama',
         credits: 4,
-        instructor: 'Prof. Dr. Ali VURAL',
-        schedule: '',
-        status: 'completed',
-        grade: 'BA',
-        points: 3.5,
+        instructor: 'Prof. Dr. Hacer ÖZYURT',
+        schedule: 'Pazartesi 13:00-16:00',
+        status: 'active',
+    },
+    {
+        id: '7',
+        code: 'YZG2001',
+        name: 'Diferansiyel Denklemler',
+        credits: 4,
+        instructor: 'Prof. Dr. Yasemin SAĞİROĞLU',
+        schedule: 'Perşembe 10:00-12:00, Cuma 10:00-12:00',
+        status: 'active',
     },
 ]
 
-export const navigationItems = [
-    {
-        title: 'Anasayfa',
-        icon: 'mdi-home',
-        to: '/'
-    },
-    {
-        title: 'Kişisel İşlemler',
-        icon: 'mdi-account-circle',
-        children: [
-            { title: 'Kişisel Bilgiler', icon: 'mdi-account-details', to: '/profile' },
-            { title: 'Telefon / E-Posta / HES Kodu', icon: 'mdi-cellphone', to: '/contact' },
-            { title: 'BYS Şifre Değiştirme', icon: 'mdi-key-variant', to: '/password' },
-            { title: 'Mail Şifre Değiştirme', icon: 'mdi-email-lock', to: '/mail-password' },
-        ]
-    },
-    {
-        title: 'Ders İşlemleri',
-        icon: 'mdi-book-open-variant',
-        children: [
-            { title: 'Transkript', icon: 'mdi-file-document-outline', to: '/transcript' },
-            { title: 'Vize Notları', icon: 'mdi-clipboard-text-outline', to: '/midterm-grades' },
-            { title: 'Ders Programı', icon: 'mdi-calendar-clock', to: '/schedule' },
-            { title: 'Bölüm Ders Programı', icon: 'mdi-calendar-month', to: '/department-schedule' },
-            { title: 'Bütünleme', icon: 'mdi-clipboard-check-outline', to: '/makeup-exams' },
-            { title: 'Akademik Durum Analizi', icon: 'mdi-chart-bar', to: '/academic-analysis' },
-        ]
-    },
-    {
-        title: 'İlişik Kesme Talebi',
-        icon: 'mdi-file-cancel-outline',
-        children: [
-            { title: 'İlişik Kesme Başvurusu', icon: 'mdi-file-remove-outline', to: '/clearance' },
-        ]
-    },
-    {
-        title: 'Staj Yönetim Sistemi',
-        icon: 'mdi-briefcase-outline',
-        children: [
-            { title: 'Duyurular', icon: 'mdi-bullhorn-outline', to: '/internship/announcements' },
-            { title: 'İlgili Mevzuatlar', icon: 'mdi-scale-balance', to: '/internship/regulations' },
-            { title: 'Staj Başvuru', icon: 'mdi-file-send-outline', to: '/internship/apply' },
-            { title: 'Tüm Staj Başvuruları', icon: 'mdi-folder-open-outline', to: '/internship/applications' },
-            { title: 'Gerekli Dosyalar', icon: 'mdi-file-download-outline', to: '/internship/documents' },
-            { title: 'Talepler', icon: 'mdi-message-text-outline', to: '/internship/requests' },
-            { title: 'Staj Sonlandır', icon: 'mdi-check-circle-outline', to: '/internship/complete' },
-            { title: 'Sık Sorulan Sorular', icon: 'mdi-help-circle-outline', to: '/internship/faq' },
-        ]
-    },
-    {
-        title: 'Burs Başvurusu',
-        icon: 'mdi-wallet-outline',
-        children: [
-            { title: 'Vakıf Bursu Başvurusu', icon: 'mdi-hand-coin-outline', to: '/scholarship/foundation-apply' },
-            { title: 'Vakıf Bursu Başvurularım', icon: 'mdi-format-list-bulleted', to: '/scholarship/foundation-list' },
-            { title: 'Yemek Bursu Başvurusu', icon: 'mdi-food-outline', to: '/scholarship/meal-apply' },
-            { title: 'Yemek Bursu Başvurularım', icon: 'mdi-format-list-checks', to: '/scholarship/meal-list' },
-        ]
-    },
-    {
-        title: 'Yemekhane',
-        icon: 'mdi-silverware-fork-knife',
-        to: '/cafeteria'
-    },
-    {
-        title: 'Spor Sahaları Yönetimi',
-        icon: 'mdi-soccer-field',
-        children: [
-            { title: 'Bakiye Yükle', icon: 'mdi-credit-card-plus-outline', to: '/sports/balance' },
-            { title: 'Sahalar', icon: 'mdi-stadium-outline', to: '/sports/fields' },
-            { title: 'Rezervasyonlarım', icon: 'mdi-calendar-check-outline', to: '/sports/reservations' },
-        ]
-    },
-    {
-        title: 'Kütüphane Borç Ödeme',
-        icon: 'mdi-library-outline',
-        to: '/library'
-    },
-    {
-        title: 'Eğitim ve Kurs Yönetimi',
-        icon: 'mdi-school-outline',
-        children: [
-            { title: 'Kurs Yönetimi', icon: 'mdi-certificate-outline', to: '/education/courses' },
-            { title: 'Başvurularım', icon: 'mdi-clipboard-list-outline', to: '/education/applications' },
-            { title: 'Yardım Dökümanı', icon: 'mdi-file-question-outline', to: '/education/help' },
-        ]
-    },
-    {
-        title: 'BYS Çıkış',
-        icon: 'mdi-logout',
-        to: '/'
-    },
+// Haftalık ders programı detayları
+export const mockCourseSchedule: CourseScheduleItem[] = [
+    // Pazartesi
+    { id: '1', courseCode: 'YZG2009', courseName: 'Bilgisayar Mimarisi ve Mantıksal Tasarım', day: 'Pazartesi', startTime: '09:00', endTime: '12:00', classroom: '-', instructor: 'Dr. Öğr. Üyesi Özkan BİNGÖL' },
+    { id: '2', courseCode: 'YZG2003', courseName: 'Nesneye Yönelik Programlama', day: 'Pazartesi', startTime: '13:00', endTime: '16:00', classroom: 'D204 / MAT-K3-4 (D204)', instructor: 'Prof. Dr. Hacer ÖZYURT' },
 
+    // Çarşamba
+    { id: '3', courseCode: 'YZG2007', courseName: 'Veri Yapıları ve Algoritmalar', day: 'Çarşamba', startTime: '08:00', endTime: '10:00', classroom: 'D204 / MAT-K3-4 (D204)', instructor: 'Dr. Öğr. Üyesi Sayyad ALİZADEH' },
+    { id: '4', courseCode: 'YZG2011', courseName: 'Yazılım Gereksinimleri Analizi', day: 'Çarşamba', startTime: '10:00', endTime: '12:00', classroom: 'D202 / MAT-K3-2 (D202)', instructor: 'Prof. Dr. Özcan ÖZYURT' },
+    { id: '5', courseCode: 'YZG2011', courseName: 'Yazılım Gereksinimleri Analizi', day: 'Çarşamba', startTime: '13:00', endTime: '14:00', classroom: 'D202 / MAT-K3-2 (D202)', instructor: 'Prof. Dr. Özcan ÖZYURT' },
+    { id: '6', courseCode: 'YZG2005', courseName: 'Sayısal Analiz', day: 'Çarşamba', startTime: '15:00', endTime: '17:00', classroom: 'D204 / MAT-K3-4 (D204)', instructor: 'Prof. Dr. Erhan COŞKUN' },
+
+    // Perşembe
+    { id: '7', courseCode: 'YZG2001', courseName: 'Diferansiyel Denklemler', day: 'Perşembe', startTime: '10:00', endTime: '12:00', classroom: 'DZ-01 / MAT-K1-33 (DZ-01) / MAT-K2-2 (D101)', instructor: 'Prof. Dr. Yasemin SAĞİROĞLU' },
+    { id: '8', courseCode: 'YZG2007', courseName: 'Veri Yapıları ve Algoritmalar', day: 'Perşembe', startTime: '13:00', endTime: '15:00', classroom: 'D204 / MAT-K3-4 (D204)', instructor: 'Dr. Öğr. Üyesi Sayyad ALİZADEH' },
+    { id: '9', courseCode: 'YZG2013', courseName: 'Programlama Laboratuvarı III', day: 'Perşembe', startTime: '14:00', endTime: '17:00', classroom: 'D204 / MAT-K3-4 (D204)', instructor: 'Dr. Öğr. Üyesi Sayyad ALİZADEH' },
+
+    // Cuma
+    { id: '10', courseCode: 'YZG2001', courseName: 'Diferansiyel Denklemler', day: 'Cuma', startTime: '10:00', endTime: '12:00', classroom: 'DZ-01 / MAT-K1-33 (DZ-01) / MAT-K2-2 (D101)', instructor: 'Prof. Dr. Yasemin SAĞİROĞLU' },
 ]
+
+// Devamsızlık verileri - 14 haftada %30 = 4.2 hafta (max 4 hafta devamsızlık)
+export const mockAttendance: Attendance[] = [
+    {
+        courseId: '1',
+        courseCode: 'YZG2013',
+        courseName: 'Programlama Laboratuvarı III',
+        totalWeeks: 14,
+        absentWeeks: 1,
+        maxAbsentWeeks: 4,
+        status: 'safe',
+    },
+    {
+        courseId: '2',
+        courseCode: 'YZG2011',
+        courseName: 'Yazılım Gereksinimleri Analizi',
+        totalWeeks: 14,
+        absentWeeks: 3,
+        maxAbsentWeeks: 4,
+        status: 'warning', // 3 hafta devamsızlık - uyarı
+    },
+    {
+        courseId: '3',
+        courseCode: 'YZG2009',
+        courseName: 'Bilgisayar Mimarisi ve Mantıksal Tasarım',
+        totalWeeks: 14,
+        absentWeeks: 0,
+        maxAbsentWeeks: 4,
+        status: 'safe',
+    },
+    {
+        courseId: '4',
+        courseCode: 'YZG2007',
+        courseName: 'Veri Yapıları ve Algoritmalar',
+        totalWeeks: 14,
+        absentWeeks: 2,
+        maxAbsentWeeks: 4,
+        status: 'safe',
+    },
+    {
+        courseId: '5',
+        courseCode: 'YZG2005',
+        courseName: 'Sayısal Analiz',
+        totalWeeks: 14,
+        absentWeeks: 3.5,
+        maxAbsentWeeks: 4,
+        status: 'danger', // 3.5 hafta - tehlike
+    },
+    {
+        courseId: '6',
+        courseCode: 'YZG2003',
+        courseName: 'Nesneye Yönelik Programlama',
+        totalWeeks: 14,
+        absentWeeks: 5,
+        maxAbsentWeeks: 4,
+        status: 'failed', // 5 hafta - devamsızlıktan kaldı
+    },
+    {
+        courseId: '7',
+        courseCode: 'YZG2001',
+        courseName: 'Diferansiyel Denklemler',
+        totalWeeks: 14,
+        absentWeeks: 1,
+        maxAbsentWeeks: 4,
+        status: 'safe',
+    },
+]
+
+// Bölüm ders programı - tüm bölüm dersleri
+export const mockDepartmentSchedule = [
+    { id: '1', code: 'YZG2003', name: 'Nesneye Yönelik Programlama - A', section: 'A', classroom: 'D204 / MAT-K3-4 (D204)', instructor: 'Prof. Dr. Hacer ÖZYURT' },
+    { id: '2', code: 'YDB1003', name: 'İngilizce - I - A', section: 'A', classroom: 'DZ-02 / MAT-K2-1 (DZ-02)', instructor: 'Öğr. Gör. Özcan GÜRSOY' },
+    { id: '3', code: 'FİZ1023', name: 'Fizik - I - A', section: 'A', classroom: 'Fizik Derslik-1 / FİZ-Z-6 (Fizik Derslik-1)', instructor: 'Prof. Dr. Coşkun AYDIN' },
+    { id: '4', code: 'MAT1037', name: 'Matematik - I - A', section: 'A', classroom: 'D103 / MAT-K2-2 (D101) / MAT-K2-4 (D103)', instructor: 'Prof. Dr. Mehmet KUNT' },
+    { id: '5', code: 'MAT1037', name: 'Matematik - I - A', section: 'A', classroom: 'D103 / MAT-K2-2 (D101) / MAT-K2-4 (D103)', instructor: 'Prof. Dr. Mehmet KUNT' },
+    { id: '6', code: 'YZG1001', name: 'Lineer Cebir - A', section: 'A', classroom: 'D102 / MAT-K2-3 (D102)', instructor: 'Prof. Dr. Funda KARAÇAL' },
+    { id: '7', code: 'YZG1003', name: 'Yazılım Geliştirme Temelleri - A', section: 'A', classroom: 'D202 / MAT-K3-2 (D202)', instructor: 'Dr. Öğr. Üyesi Ercüment YILMAZ' },
+    { id: '8', code: 'YZG1005', name: 'Programlama I - A', section: 'A', classroom: 'D204 / MAT-K3-4 (D204)', instructor: 'Dr. Öğr. Üyesi Işılay BOZKURT' },
+    { id: '9', code: 'YZG1007', name: 'Programlama Laboratuvarı I - A', section: 'A', classroom: 'D204 / MAT-K3-4 (D204)', instructor: 'Dr. Öğr. Üyesi Işılay BOZKURT' },
+    { id: '10', code: 'YZG2001', name: 'Diferansiyel Denklemler - A', section: 'A', classroom: 'D101 / MAT-K1-33 (DZ-01) / MAT-K2-2 (D101)', instructor: 'Prof. Dr. Yasemin SAĞİROĞLU' },
+    { id: '11', code: 'YZG2001', name: 'Diferansiyel Denklemler - A', section: 'A', classroom: 'D101 / MAT-K1-33 (DZ-01) / MAT-K2-2 (D101)', instructor: 'Prof. Dr. Yasemin SAĞİROĞLU' },
+    { id: '12', code: 'YZG2005', name: 'Sayısal Analiz - A', section: 'A', classroom: 'D204 / MAT-K3-4 (D204)', instructor: 'Prof. Dr. Erhan COŞKUN' },
+    { id: '13', code: 'YZG2007', name: 'Veri Yapıları ve Algoritmalar - A', section: 'A', classroom: 'D204 / MAT-K3-4 (D204)', instructor: 'Dr. Öğr. Üyesi Sayyad ALİZADEH' },
+    { id: '14', code: 'YZG2009', name: 'Bilgisayar Mimarisi ve Mantıksal Tasarım - A', section: 'A', classroom: '/', instructor: 'Dr. Öğr. Üyesi Özkan BİNGÖL' },
+    { id: '15', code: 'YZG2011', name: 'Yazılım Gereksinimleri Analizi - A', section: 'A', classroom: 'D202 / MAT-K3-2 (D202)', instructor: 'Prof. Dr. Özcan ÖZYURT' },
+    { id: '16', code: 'YZG2013', name: 'Programlama Laboratuvarı III - A', section: 'A', classroom: 'D204 / MAT-K3-4 (D204)', instructor: 'Dr. Öğr. Üyesi Sayyad ALİZADEH' },
+]
+
+// Vize notları - daha gerçekçi ve çeşitli
+export const mockMidtermGrades = [
+    { courseCode: 'YZG2013', courseName: 'Programlama Laboratuvarı III', midterm1: 78, midterm2: null, average: 78, instructor: 'Dr. Öğr. Üyesi Sayyad ALİZADEH' },
+    { courseCode: 'YZG2011', courseName: 'Yazılım Gereksinimleri Analizi', midterm1: 85, midterm2: 79, average: 82, instructor: 'Prof. Dr. Özcan ÖZYURT' },
+    { courseCode: 'YZG2009', courseName: 'Bilgisayar Mimarisi ve Mantıksal Tasarım', midterm1: 62, midterm2: null, average: 62, instructor: 'Dr. Öğr. Üyesi Özkan BİNGÖL' },
+    { courseCode: 'YZG2007', courseName: 'Veri Yapıları ve Algoritmalar', midterm1: 91, midterm2: 86, average: 88.5, instructor: 'Dr. Öğr. Üyesi Sayyad ALİZADEH' },
+    { courseCode: 'YZG2005', courseName: 'Sayısal Analiz', midterm1: 55, midterm2: 68, average: 61.5, instructor: 'Prof. Dr. Erhan COŞKUN' },
+    { courseCode: 'YZG2003', courseName: 'Nesneye Yönelik Programlama', midterm1: 72, midterm2: 81, average: 76.5, instructor: 'Prof. Dr. Hacer ÖZYURT' },
+    { courseCode: 'YZG2001', courseName: 'Diferansiyel Denklemler', midterm1: 48, midterm2: 59, average: 53.5, instructor: 'Prof. Dr. Yasemin SAĞİROĞLU' },
+]
+
+// Geçmiş dönem dersleri (transkript için) - daha gerçekçi notlar
+export const mockTranscriptCourses = [
+    // 1. Dönem
+    { semester: '2023-2024 Güz', code: 'YZG1001', name: 'Lineer Cebir', credits: 4, grade: 'BB', points: 3.0, instructor: 'Prof. Dr. Funda KARAÇAL' },
+    { semester: '2023-2024 Güz', code: 'YZG1003', name: 'Yazılım Geliştirme Temelleri', credits: 3, grade: 'AA', points: 4.0, instructor: 'Dr. Öğr. Üyesi Ercüment YILMAZ' },
+    { semester: '2023-2024 Güz', code: 'YZG1005', name: 'Programlama I', credits: 4, grade: 'BA', points: 3.5, instructor: 'Dr. Öğr. Üyesi Işılay BOZKURT' },
+    { semester: '2023-2024 Güz', code: 'YZG1007', name: 'Programlama Laboratuvarı I', credits: 2, grade: 'AA', points: 4.0, instructor: 'Dr. Öğr. Üyesi Işılay BOZKURT' },
+    { semester: '2023-2024 Güz', code: 'MAT1037', name: 'Matematik I', credits: 5, grade: 'CB', points: 2.5, instructor: 'Prof. Dr. Mehmet KUNT' },
+    { semester: '2023-2024 Güz', code: 'FİZ1023', name: 'Fizik I', credits: 4, grade: 'BA', points: 3.5, instructor: 'Prof. Dr. Coşkun AYDIN' },
+    { semester: '2023-2024 Güz', code: 'YDB1003', name: 'İngilizce I', credits: 3, grade: 'BB', points: 3.0, instructor: 'Öğr. Gör. Özcan GÜRSOY' },
+    // 2. Dönem
+    { semester: '2023-2024 Bahar', code: 'YZG1002', name: 'Ayrık Matematik', credits: 4, grade: 'BA', points: 3.5, instructor: 'Prof. Dr. Funda KARAÇAL' },
+    { semester: '2023-2024 Bahar', code: 'YZG1004', name: 'Algoritma Analizi', credits: 3, grade: 'AA', points: 4.0, instructor: 'Dr. Öğr. Üyesi Ercüment YILMAZ' },
+    { semester: '2023-2024 Bahar', code: 'YZG1006', name: 'Programlama II', credits: 4, grade: 'AA', points: 4.0, instructor: 'Dr. Öğr. Üyesi Işılay BOZKURT' },
+    { semester: '2023-2024 Bahar', code: 'YZG1008', name: 'Programlama Laboratuvarı II', credits: 2, grade: 'BA', points: 3.5, instructor: 'Dr. Öğr. Üyesi Sayyad ALİZADEH' },
+    { semester: '2023-2024 Bahar', code: 'MAT1038', name: 'Matematik II', credits: 5, grade: 'CC', points: 2.0, instructor: 'Prof. Dr. Mehmet KUNT' },
+    { semester: '2023-2024 Bahar', code: 'FİZ1024', name: 'Fizik II', credits: 4, grade: 'BB', points: 3.0, instructor: 'Prof. Dr. Coşkun AYDIN' },
+    { semester: '2023-2024 Bahar', code: 'YDB1004', name: 'İngilizce II', credits: 3, grade: 'AA', points: 4.0, instructor: 'Öğr. Gör. Özcan GÜRSOY' },
+]
+
+

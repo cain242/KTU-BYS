@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useTheme } from 'vuetify'
 import { useStudentStore } from '@/stores/studentStore'
 
 defineEmits<{
@@ -9,21 +8,14 @@ defineEmits<{
 }>()
 
 const route = useRoute()
-const theme = useTheme()
 const studentStore = useStudentStore()
 
 const searchQuery = ref('')
 const notificationCount = ref(3)
 
-const isDark = computed(() => theme.global.current.value.dark)
-
 const currentPageTitle = computed(() => {
   return (route.meta?.title as string) || 'KTÜ Öğrenci Bilgi Sistemi'
 })
-
-function toggleTheme() {
-  theme.global.name.value = isDark.value ? 'ktuTheme' : 'ktuDarkTheme'
-}
 </script>
 
 
@@ -42,14 +34,6 @@ function toggleTheme() {
     <!-- Search -->
     <v-text-field v-model="searchQuery" density="compact" variant="solo-filled" flat placeholder="Ara..."
       prepend-inner-icon="mdi-magnify" hide-details single-line class="search-field mr-4" style="max-width: 300px" />
-
-    <!-- Theme Toggle -->
-    <v-btn icon variant="text" @click="toggleTheme" class="mr-2">
-      <v-icon>{{ isDark ? 'mdi-weather-sunny' : 'mdi-weather-night' }}</v-icon>
-      <v-tooltip activator="parent" location="bottom">
-        {{ isDark ? 'Açık Mod' : 'Koyu Mod' }}
-      </v-tooltip>
-    </v-btn>
 
     <!-- Notifications -->
     <v-btn icon variant="text" class="mr-2">

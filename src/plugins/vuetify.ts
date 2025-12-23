@@ -25,27 +25,6 @@ const ktuTheme = {
   },
 }
 
-const ktuDarkTheme = {
-  dark: true,
-  colors: {
-    primary: '#42A5F5',
-    'primary-darken-1': '#1E88E5',
-    secondary: '#26C6DA',
-    'secondary-darken-1': '#00ACC1',
-    accent: '#00BCD4',
-    success: '#66BB6A',
-    warning: '#FFA726',
-    error: '#EF5350',
-    info: '#29B6F6',
-    background: '#121212',
-    surface: '#1E1E1E',
-    'on-primary': '#000000',
-    'on-secondary': '#000000',
-    'on-background': '#FFFFFF',
-    'on-surface': '#FFFFFF',
-  },
-}
-
 export default createVuetify({
   components,
   directives,
@@ -53,7 +32,6 @@ export default createVuetify({
     defaultTheme: 'ktuTheme',
     themes: {
       ktuTheme,
-      ktuDarkTheme,
     },
   },
   defaults: {
@@ -69,5 +47,9 @@ export default createVuetify({
       variant: 'outlined',
       density: 'comfortable',
     },
+    VTooltip: {
+      contentClass: 'bg-secondary',
+    },
   },
 })
+

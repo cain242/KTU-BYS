@@ -27,7 +27,7 @@ const academicInfo = computed<InfoItem[]>(() => [
     { label: 'Program', value: studentStore.student.program, icon: 'mdi-certificate' },
     { label: 'Danışman', value: studentStore.student.advisor, icon: 'mdi-account-tie', type: 'link', href: 'https://avesis.ktu.edu.tr/oozyurt' },
     { label: 'Genel Not Ortalaması', value: studentStore.student.gpa.toFixed(2), icon: 'mdi-chart-line' },
-    { label: 'Harç Durumu', value: 'Harç ödemeniz gerekmektedir', icon: 'mdi-currency-try', type: 'chip', chipColor: 'warning' },
+    { label: 'Harç Durumu', value: 'Harç ödemeniz gerekmektedir', icon: 'mdi-currency-try', type: 'chip', chipColor: 'info' },
 ])
 </script>
 

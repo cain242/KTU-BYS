@@ -50,3 +50,24 @@ export interface NavItem {
     to?: string
     children?: NavItem[]
 }
+
+export interface CourseScheduleItem {
+    id: string
+    courseCode: string
+    courseName: string
+    day: 'Pazartesi' | 'Salı' | 'Çarşamba' | 'Perşembe' | 'Cuma'
+    startTime: string
+    endTime: string
+    classroom: string
+    instructor: string
+}
+
+export interface Attendance {
+    courseId: string
+    courseCode: string
+    courseName: string
+    totalWeeks: number
+    absentWeeks: number
+    maxAbsentWeeks: number
+    status: 'safe' | 'warning' | 'danger' | 'failed'
+}

@@ -81,6 +81,12 @@ const routes: RouteRecordRaw[] = [
         meta: { title: 'Akademik Durum Analizi' }
     },
     {
+        path: '/attendance',
+        name: 'Attendance',
+        component: () => import('@/views/AttendanceView.vue'),
+        meta: { title: 'Devamsızlık Takibi' }
+    },
+    {
         path: '/clearance',
         name: 'Clearance',
         component: () => import('@/views/ClearanceView.vue'),

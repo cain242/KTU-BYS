@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { navigationItems } from '@/mock/mockData'
+import { navigationItems } from '@/mock/navigationItemMock'
 import ktuLogo from '@/assets/Photos/ktu-logo.png'
 
 defineProps<{

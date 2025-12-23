@@ -78,13 +78,6 @@ const statusText = computed(() => {
     </div>
 
     <v-divider />
-
-    <v-card-actions class="pa-4">
-      <v-btn variant="tonal" color="primary" block to="/profile">
-        <v-icon start>mdi-account-details</v-icon>
-        Profili Görüntüle
-      </v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 

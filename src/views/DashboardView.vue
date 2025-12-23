@@ -38,7 +38,7 @@ const quickActions = [
   { title: 'Ders Kayıt', subtitle: 'Ders kaydı yap', icon: 'mdi-book-plus', color: '#1565C0', to: '/courses' },
   { title: 'Transkript', subtitle: 'Notlarını gör', icon: 'mdi-file-document', color: '#00897B', to: '/transcript' },
   { title: 'Harç Öde', subtitle: 'Harç ödeme', icon: 'mdi-wallet', color: '#F4511E', to: '/fees' },
-  { title: 'Danışman', subtitle: 'İletişime geç', icon: 'mdi-account-tie', color: '#7B1FA2', to: '/advisor' },
+  { title: 'Devamsızlıklar', subtitle: 'Derslerin Devamzızlık Sayısı', icon: 'mdi-account-tie', color: '#7B1FA2', to: '/attendance' },
 ]
 </script>
 
