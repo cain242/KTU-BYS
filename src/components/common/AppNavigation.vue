@@ -1,16 +1,27 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+import { navigationItems } from '@/mock/mockData'
+import ktuLogo from '@/assets/Photos/ktu-logo.png'
+
+defineProps<{
+  modelValue: boolean
+}>()
+
+defineEmits<{
+  'update:modelValue': [value: boolean]
+}>()
+
+const rail = ref(false)
+</script>
+
 <template>
-  <v-navigation-drawer
-    :model-value="modelValue"
-    @update:model-value="$emit('update:modelValue', $event)"
-    :rail="rail"
-    permanent
-    class="nav-drawer"
-  >
+  <v-navigation-drawer :model-value="modelValue" @update:model-value="$emit('update:modelValue', $event)" :rail="rail"
+    permanent class="nav-drawer">
     <!-- Logo Section -->
     <div class="logo-section pa-4">
       <div class="d-flex align-center">
         <div class="logo-icon">
-          <v-icon size="32" color="primary">mdi-school</v-icon>
+          <v-img :src="ktuLogo" width="32" height="32" />
         </div>
         <div v-if="!rail" class="ml-3">
           <div class="text-h6 font-weight-bold text-primary">KTÜ</div>
@@ -27,62 +38,25 @@
         <!-- Items with children -->
         <v-list-group v-if="item.children" :value="item.title">
           <template #activator="{ props }">
-            <v-list-item
-              v-bind="props"
-              :prepend-icon="item.icon"
-              :title="item.title"
-              class="nav-item"
-            />
+            <v-list-item v-bind="props" :prepend-icon="item.icon" :title="item.title" class="nav-item" />
           </template>
-          <v-list-item
-            v-for="child in item.children"
-            :key="child.title"
-            :to="child.to"
-            :prepend-icon="child.icon"
-            :title="child.title"
-            class="nav-child-item"
-          />
+          <v-list-item v-for="child in item.children" :key="child.title" :to="child.to" :prepend-icon="child.icon"
+            :title="child.title" class="nav-child-item" />
         </v-list-group>
 
         <!-- Items without children -->
-        <v-list-item
-          v-else
-          :to="item.to"
-          :prepend-icon="item.icon"
-          :title="item.title"
-          class="nav-item"
-        />
+        <v-list-item v-else :to="item.to" :prepend-icon="item.icon" :title="item.title" class="nav-item" />
       </template>
     </v-list>
 
     <template #append>
       <v-divider />
       <div class="pa-2">
-        <v-btn
-          block
-          variant="text"
-          @click="rail = !rail"
-          :icon="rail ? 'mdi-chevron-right' : 'mdi-chevron-left'"
-        />
+        <v-btn block variant="text" @click="rail = !rail" :icon="rail ? 'mdi-chevron-right' : 'mdi-chevron-left'" />
       </div>
     </template>
   </v-navigation-drawer>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue'
-import { navigationItems } from '@/mock/mockData'
-
-defineProps<{
-  modelValue: boolean
-}>()
-
-defineEmits<{
-  'update:modelValue': [value: boolean]
-}>()
-
-const rail = ref(false)
-</script>
 
 <style scoped>
 .nav-drawer {

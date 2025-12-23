@@ -1,4 +1,5 @@
 import type { Student, Announcement, Course } from '@/types'
+import tunahanPhoto from '@/assets/Photos/tunahan.jpeg'
 
 export const mockStudent: Student = {
     id: '1',
@@ -21,6 +22,7 @@ export const mockStudent: Student = {
     totalCredits: 120,
     completedCredits: 64,
     feeStatus: 'pending',
+    photoUrl: tunahanPhoto
 }
 
 export const mockAnnouncements: Announcement[] = [
