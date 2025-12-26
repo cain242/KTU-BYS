@@ -216,6 +216,12 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/EducationView.vue'),
         meta: { title: 'Yardım Dökümanı' }
     },
+    {
+        path: '/fees',
+        name: 'Fees',
+        component: () => import('@/views/FeesView.vue'),
+        meta: { title: 'Harç Ödemeleri' }
+    },
 ]
 
 const router = createRouter({

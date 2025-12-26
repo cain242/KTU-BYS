@@ -71,3 +71,39 @@ export interface Attendance {
     maxAbsentWeeks: number
     status: 'safe' | 'warning' | 'danger' | 'failed'
 }
+
+export interface Fee {
+    id: string
+    semester: string
+    amount: number
+    status: 'paid' | 'pending' | 'overdue'
+    dueDate: string
+    paymentDate?: string
+}
+
+export interface LibraryBook {
+    id: string
+    title: string
+    author: string
+    borrowDate: string
+    dueDate: string
+    status: 'borrowed' | 'overdue' | 'returned'
+}
+
+export interface CafeteriaMenu {
+    day: string
+    date: string
+    soup: string
+    mainCourse: string
+    sideDish: string
+    dessert: string
+    calories: number
+}
+
+export interface MakeupEligibleCourse {
+    id: string
+    code: string
+    name: string
+    instructor: string
+    grade: string
+}

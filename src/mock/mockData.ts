@@ -1,4 +1,4 @@
-import type { Student, Announcement, Course, CourseScheduleItem, Attendance } from '@/types'
+import type { Student, Announcement, Course, CourseScheduleItem, Attendance, Fee, LibraryBook, CafeteriaMenu, MakeupEligibleCourse } from '@/types'
 import tunahanPhoto from '@/assets/Photos/tunahan.jpeg'
 
 export const mockStudent: Student = {
@@ -266,6 +266,30 @@ export const mockTranscriptCourses = [
     { semester: '2023-2024 Bahar', code: 'MAT1038', name: 'Matematik II', credits: 5, grade: 'CC', points: 2.0, instructor: 'Prof. Dr. Mehmet KUNT' },
     { semester: '2023-2024 Bahar', code: 'FİZ1024', name: 'Fizik II', credits: 4, grade: 'BB', points: 3.0, instructor: 'Prof. Dr. Coşkun AYDIN' },
     { semester: '2023-2024 Bahar', code: 'YDB1004', name: 'İngilizce II', credits: 3, grade: 'AA', points: 4.0, instructor: 'Öğr. Gör. Özcan GÜRSOY' },
+]
+
+export const mockFees: Fee[] = [
+    { id: '1', semester: '2024-2025 Güz', amount: 480.00, status: 'paid', dueDate: '2024-02-15', paymentDate: '2024-02-12' },
+    { id: '2', semester: '2023-2024 Bahar', amount: 480.00, status: 'paid', dueDate: '2023-09-15', paymentDate: '2023-09-10' },
+    { id: '3', semester: '2023-2024 Güz', amount: 450.00, status: 'paid', dueDate: '2023-02-15', paymentDate: '2023-02-11' },
+]
+
+export const mockLibraryBooks: LibraryBook[] = [
+    { id: '1', title: 'Veri Yapıları ve Algoritmalar', author: 'Rifat Çölkesen', borrowDate: '2024-02-01', dueDate: '2024-03-01', status: 'borrowed' },
+    { id: '2', title: 'Temel Fizik I', author: 'Raymond Serway', borrowDate: '2024-01-15', dueDate: '2024-02-15', status: 'overdue' },
+]
+
+export const mockCafeteriaMenu: CafeteriaMenu[] = [
+    { day: 'Pazartesi', date: '2024-12-23', soup: 'Mercimek Çorbası', mainCourse: 'İzmir Köfte', sideDish: 'Pirinç Pilavı', dessert: 'Kemalpaşa Tatlısı', calories: 850 },
+    { day: 'Salı', date: '2024-12-24', soup: 'Domates Çorbası', mainCourse: 'Tavuk Sote', sideDish: 'Bulgur Pilavı', dessert: 'Meyve', calories: 720 },
+    { day: 'Çarşamba', date: '2024-12-25', soup: 'Yayla Çorbası', mainCourse: 'Kuru Fasulye', sideDish: 'Pirinç Pilavı', dessert: 'Cacık', calories: 910 },
+    { day: 'Perşembe', date: '2024-12-26', soup: 'Ezogelin Çorbası', mainCourse: 'Fırın Makarna', sideDish: 'Mevsim Salatası', dessert: 'Sütlaç', calories: 680 },
+    { day: 'Cuma', date: '2024-12-27', soup: 'Tarhana Çorbası', mainCourse: 'Balık Tava', sideDish: 'Patates Tava', dessert: 'Helva', calories: 950 },
+]
+
+export const mockMakeupEligible: MakeupEligibleCourse[] = [
+    { id: '1', code: 'YZG2001', name: 'Diferansiyel Denklemler', instructor: 'Prof. Dr. Yasemin SAĞİROĞLU', grade: 'FF' },
+    { id: '2', code: 'YZG2005', name: 'Sayısal Analiz', instructor: 'Prof. Dr. Erhan COŞKUN', grade: 'FD' },
 ]
 
 
