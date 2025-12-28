@@ -16,7 +16,7 @@ const currentTheme = computed(() => theme.global.name.value)
     <AppNavigation v-model="drawer" />
     <AppBar @toggle-drawer="drawer = !drawer" />
     <v-main class="main-content">
-      <v-container fluid :class="mdAndDown ? 'pa-4' : 'pa-6'">
+      <v-container fluid :class="mdAndDown ? 'pt-0 px-2 pb-4' : 'pt-2 px-6 pb-6'">
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">
             <component :is="Component" />
@@ -31,6 +31,8 @@ const currentTheme = computed(() => theme.global.name.value)
 .main-content {
   background: linear-gradient(135deg, rgb(var(--v-theme-background)) 0%, rgb(var(--v-theme-surface)) 100%);
   min-height: 100vh;
+  overflow-y: auto; /* Ensure main content is scrollable */
+  overflow-x: hidden;
 }
 
 .fade-enter-active,

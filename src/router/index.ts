@@ -186,6 +186,12 @@ const routes: RouteRecordRaw[] = [
         meta: { title: 'Spor Sahaları' }
     },
     {
+        path: '/sports/availability',
+        name: 'SportsAvailability',
+        component: () => import('@/views/SportsView.vue'),
+        meta: { title: 'Sahalar' }
+    },
+    {
         path: '/sports/reservations',
         name: 'SportsReservations',
         component: () => import('@/views/SportsView.vue'),

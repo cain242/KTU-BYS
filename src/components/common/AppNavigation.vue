@@ -197,4 +197,16 @@ watch(mdAndDown, (isMobileOrTablet) => {
 :deep(.v-list-item--active .v-icon) {
   color: rgb(var(--v-theme-primary)) !important;
 }
+
+:deep(.v-list-item-title) {
+  white-space: normal !important;
+  word-break: break-word !important;
+  line-height: 1.2 !important;
+  font-size: 0.9rem !important;
+}
+
+:deep(.v-list-item) {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
 </style>

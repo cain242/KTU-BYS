@@ -66,7 +66,7 @@ export const navigationItems = [
         icon: 'mdi-soccer-field',
         children: [
             { title: 'Bakiye Yükle', icon: 'mdi-credit-card-plus-outline', to: '/sports/balance' },
-            { title: 'Sahalar', icon: 'mdi-stadium-outline', to: '/sports/fields' },
+            { title: 'Sahalar', icon: 'mdi-stadium-outline', to: '/sports/availability' },
             { title: 'Rezervasyonlarım', icon: 'mdi-calendar-check-outline', to: '/sports/reservations' },
         ]
     },

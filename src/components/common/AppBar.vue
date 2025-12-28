@@ -31,8 +31,8 @@ const currentPageTitle = computed(() => {
     <template v-if="!showSearchMobile">
       <v-app-bar-nav-icon @click="$emit('toggle-drawer')" />
 
-      <v-app-bar-title class="d-flex align-center">
-        <span class="text-h6 font-weight-medium">
+      <v-app-bar-title class="app-bar-title">
+        <span class="text-subtitle-1 text-sm-h6 font-weight-medium title-text">
           {{ currentPageTitle }}
         </span>
       </v-app-bar-title>
@@ -180,5 +180,29 @@ const currentPageTitle = computed(() => {
 
 .border-bottom {
   border-bottom: 1px solid rgba(var(--v-border-color), 0.05);
+}
+
+.app-bar-title {
+  margin-inline-start: 8px !important;
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .title-text {
+    font-size: 0.9rem !important;
+    letter-spacing: -0.2px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 120px; /* Even tighter limit to avoid overlap */
+  }
+  
+  .app-bar-title {
+    margin-inline-start: 0 !important;
+    padding-right: 0 !important;
+    max-width: fit-content;
+  }
 }
 </style>
