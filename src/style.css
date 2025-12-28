@@ -77,3 +77,20 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* Shared Card Styles (used across multiple views) */
+.content-card {
+  border-radius: 16px;
+  background: rgb(var(--v-theme-surface));
+  border: 1px solid rgba(var(--v-border-color), var(--v-border-opacity));
+}
+
+.inner-card {
+  border-radius: 12px;
+  background: rgba(var(--v-theme-on-surface), 0.03);
+}
+
+/* Page root background - consistent across views */
+.page-root {
+  min-height: calc(100vh - 64px);
+}
